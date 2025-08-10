@@ -12,6 +12,8 @@
     <orderEntry type="module" module-name="app.main" />
     <orderEntry type="library" name="Gradle: io.javalin:javalin:6.7.0" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-simple:2.0.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.zaxxer:HikariCP:7.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.h2database:h2:2.3.232" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.30" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter:5.10.0" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.jetty.websocket:websocket-jetty-server:11.0.25" level="project" />
