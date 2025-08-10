@@ -24,6 +24,10 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:2.0.16")
     implementation("com.zaxxer:HikariCP:7.0.0")
     implementation("com.h2database:h2:2.3.232")
+    implementation("gg.jte:jte:3.2.1")
+    implementation("io.javalin:javalin:6.4.0")
+    implementation("io.javalin:javalin-bundle:6.1.3")
+    implementation("io.javalin:javalin-rendering:6.1.3")
 }
 
 tasks.test {

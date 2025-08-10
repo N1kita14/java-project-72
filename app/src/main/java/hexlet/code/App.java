@@ -2,6 +2,10 @@ package hexlet.code;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import gg.jte.ContentType;
+import gg.jte.TemplateEngine;
+import gg.jte.resolve.ResourceCodeResolver;
+import io.javalin.rendering.template.JavalinJte;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,7 +41,10 @@ public class App {
             statement.execute(sql);
         }
         if (instance == null) {
-            instance = Javalin.create().start(7000);
+            instance = Javalin.create(config -> {
+                config.fileRenderer(new JavalinJte(createTemplateEngine()));
+            }).start(7000);
+
         }
         return instance;
     }
@@ -51,5 +58,12 @@ public class App {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             return reader.lines().collect(Collectors.joining("\n"));
         }
+    }
+
+    private static TemplateEngine createTemplateEngine() {
+        ClassLoader classLoader = App.class.getClassLoader();
+        ResourceCodeResolver codeResolver = new ResourceCodeResolver("templates", classLoader);
+        TemplateEngine templateEngine = TemplateEngine.create(codeResolver, ContentType.Html);
+        return templateEngine;
     }
 }
