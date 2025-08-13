@@ -5,6 +5,9 @@ import com.zaxxer.hikari.HikariDataSource;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
+import hexlet.code.controller.RootController;
+import hexlet.code.controller.UrlsController;
+import hexlet.code.repository.BaseRepository;
 import io.javalin.rendering.template.JavalinJte;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +26,7 @@ public class App {
 
     public static void main(String[] args) throws SQLException, IOException {
         var app = getApp();
-        app.get("/", ctx -> ctx.result("Hello World"));
+        //app.get("/", ctx -> ctx.result("Hello World"));
     }
 
     public static Javalin getApp() throws IOException, SQLException {
@@ -40,12 +43,19 @@ public class App {
              var statement = connection.createStatement()) {
             statement.execute(sql);
         }
+        BaseRepository.dataSource = dataSource;
+
         if (instance == null) {
             instance = Javalin.create(config -> {
                 config.fileRenderer(new JavalinJte(createTemplateEngine()));
             }).start(7000);
+            instance.get("/", RootController::index);
+            instance.get("/urls", UrlsController::index);
+            instance.get("/urls/{id}", UrlsController::show);
+            instance.post("/urls", UrlsController::create);
 
         }
+
         return instance;
     }
 
