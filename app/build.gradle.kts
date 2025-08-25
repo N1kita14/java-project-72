@@ -28,6 +28,8 @@ dependencies {
     implementation("io.javalin:javalin:6.4.0")
     implementation("io.javalin:javalin-bundle:6.1.3")
     implementation("io.javalin:javalin-rendering:6.1.3")
+    testImplementation("org.assertj:assertj-core:3.27.2")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 }
 
 tasks.test {
