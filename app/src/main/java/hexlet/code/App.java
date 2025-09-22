@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class App {
-    private static Javalin instance;
+    //private static Javalin instance;
 
     public static void main(String[] args) throws SQLException, IOException {
         //var app = getApp();
@@ -45,7 +45,7 @@ public class App {
         }
         BaseRepository.dataSource = dataSource;
 
-        if (instance == null) {
+        /*if (instance == null) {
             instance = Javalin.create(config -> {
                 config.fileRenderer(new JavalinJte(createTemplateEngine()));
             });
@@ -54,8 +54,14 @@ public class App {
             instance.get("/urls/{id}", UrlsController::show);
             instance.post("/urls", UrlsController::create);
 
-        }
-        return instance;
+        }*/
+        return Javalin.create(config -> {
+            config.fileRenderer(new JavalinJte(createTemplateEngine()));
+        })
+        .get("/", RootController::index)
+        .get("/urls", UrlsController::index)
+        .get("/urls/{id}", UrlsController::show)
+        .post("/urls", UrlsController::create);
     }
 
     public static String getJdbs() {

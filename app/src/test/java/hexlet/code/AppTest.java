@@ -24,7 +24,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public final class AppTest {
-    public static Javalin app;
+    //public static Javalin app;
     public static MockWebServer mockServer;
     @BeforeAll
     public static void beginServer() throws IOException {
@@ -37,10 +37,10 @@ public final class AppTest {
         mockServer.start();
     }
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        app = App.getApp();
-    }
+    //@BeforeEach
+    //public void setUp() throws Exception {
+        //app = App.getApp();
+    //}
 
     @AfterAll
     public static void endServer() throws IOException {
@@ -50,7 +50,7 @@ public final class AppTest {
     @Test
     public void testUrlsPage() throws Exception {
 
-        JavalinTest.test(app, (server, client) -> {
+        JavalinTest.test(App.getApp(), (server, client) -> {
             var response = client.get("/");
             assertThat(response.code()).isEqualTo(200);
             assertThat(response.body().string()).contains("Анализатор страниц");
@@ -60,25 +60,25 @@ public final class AppTest {
     @Test
     public void testUrlPage() throws Exception {
 
-        JavalinTest.test(app, (server, client) -> {
+        JavalinTest.test(App.getApp(), (server, client) -> {
             var response = client.get("/urls");
             assertThat(response.code()).isEqualTo(200);
         });
     }
 
     @Test
-    public void testUrlCreate() throws SQLException {
+    public void testUrlCreate() throws SQLException, IOException {
         var url = new Url("https://www.example.com");
         UrlRepository.save(url);
-        JavalinTest.test(app, (server, client) -> {
+        JavalinTest.test(App.getApp(), (server, client) -> {
             var response = client.get("/urls/" + url.getId());
             assertThat(response.code()).isEqualTo(200);
             assertThat(response.body().string()).contains("https://www.example.com");
         });
     }
     @Test
-    public void testUrlsCreate() throws SQLException {
-        JavalinTest.test(app, (server, client) -> {
+    public void testUrlsCreate() throws SQLException, IOException {
+        JavalinTest.test(App.getApp(), (server, client) -> {
             String requestBody = "url=https://www.example.com";
             var response = client.post("/urls", requestBody);
             assertThat(response.code()).isEqualTo(200);
@@ -88,8 +88,8 @@ public final class AppTest {
     }
 
     @Test
-    public void testNotFound() throws SQLException {
-        JavalinTest.test(app, (server, client) -> {
+    public void testNotFound() throws SQLException, IOException {
+        JavalinTest.test(App.getApp(), (server, client) -> {
             var response = client.get("/urls/7777777");
             assertThat(response.code()).isEqualTo(404);
         });
