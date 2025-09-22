@@ -45,18 +45,16 @@ public class App {
         }
         BaseRepository.dataSource = dataSource;
 
-        if (instance == null) {
-            instance = Javalin.create(config -> {
-                config.fileRenderer(new JavalinJte(createTemplateEngine()));
-            }).start(7000);
-            instance.get("/", RootController::index);
-            instance.get("/urls", UrlsController::index);
-            instance.get("/urls/{id}", UrlsController::show);
-            instance.post("/urls", UrlsController::create);
+        //if (instance == null) {
+            //instance = Javalin.create(config -> {
+             //   config.fileRenderer(new JavalinJte(createTemplateEngine()));
+           // }).start(7000);
+            //instance.get("/", RootController::index);
+            //instance.get("/urls", UrlsController::index);
+            //instance.get("/urls/{id}", UrlsController::show);
+           // instance.post("/urls", UrlsController::create);
 
-        }
-        //
-
+        //}
         return instance;
     }
 
