@@ -4,6 +4,6 @@ import io.javalin.http.Context;
 
 public class RootController {
     public static void index(Context ctx) {
-        ctx.render("page.jte");
+        ctx.render("index.jte");
     }
 }
