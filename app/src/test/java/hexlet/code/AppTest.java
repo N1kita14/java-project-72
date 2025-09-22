@@ -37,8 +37,8 @@ public final class AppTest {
         mockServer.start();
     }
 
-    @BeforeEach
-    public void setUp() throws Exception {
+    @BeforeAll
+    public static void setUp() throws Exception {
         app = App.getApp();
     }
 
