@@ -68,9 +68,9 @@ public final class AppTest {
 
     @Test
     public void testUrlCreate() throws SQLException, IOException {
-        var url = new Url("https://www.example.com");
-        UrlRepository.save(url);
         JavalinTest.test(App.getApp(), (server, client) -> {
+            var url = new Url("https://www.example.com");
+            UrlRepository.save(url);
             var response = client.get("/urls/" + url.getId());
             assertThat(response.code()).isEqualTo(200);
             assertThat(response.body().string()).contains("https://www.example.com");
