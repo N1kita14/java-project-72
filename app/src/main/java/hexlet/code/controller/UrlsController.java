@@ -6,6 +6,7 @@ import hexlet.code.dto.urls.UrlsPage;
 import hexlet.code.models.Url;
 import hexlet.code.repository.UrlCheckRepository;
 import hexlet.code.repository.UrlRepository;
+import hexlet.code.util.NamedRoutes;
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 
@@ -25,7 +26,7 @@ public class UrlsController {
         //var listChecks = UrlCheckRepository.getLastChecks();
         var page = new UrlsPage(urls);
         //page.setFlash(ctx.consumeSessionAttribute("flash"));
-        ctx.render("urls/page.jte", model("page", page));
+        ctx.render("urls/index.jte", model("page", page));
     }
 
     public static void show(Context ctx) throws SQLException {
@@ -52,10 +53,10 @@ public class UrlsController {
             } else {
                 ctx.sessionAttribute("flash", "Страница уже существует");
             }
-            ctx.redirect("/");
+            ctx.redirect(NamedRoutes.urlsPath());
         } catch (URISyntaxException | IllegalArgumentException | IOException e) {
             ctx.sessionAttribute("flash", "Некорректный URL");
-            ctx.redirect("/");
+            ctx.redirect(NamedRoutes.urlsPath());
         }
     }
 }
