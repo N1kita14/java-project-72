@@ -32,4 +32,6 @@ content = @`
             </div>
         </section>
     </main>
+
+    `
 )
