@@ -8,6 +8,7 @@ import gg.jte.resolve.ResourceCodeResolver;
 import hexlet.code.controller.RootController;
 import hexlet.code.controller.UrlsController;
 import hexlet.code.repository.BaseRepository;
+import hexlet.code.util.NamedRoutes;
 import io.javalin.rendering.template.JavalinJte;
 import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
@@ -58,10 +59,12 @@ public class App {
         return Javalin.create(config -> {
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
         })
-        .get("/", RootController::index)
-        .get("/urls", UrlsController::index)
-        .get("/urls/{id}", UrlsController::show)
-        .post("/urls", UrlsController::create);
+        .get(NamedRoutes.rootPath(), RootController::index)
+
+        .post(NamedRoutes.urlsPath(), UrlsController::create)
+        .get(NamedRoutes.urlsPath(), UrlsController::index)
+        .get(NamedRoutes.urlPath("{id}"), UrlsController::show);
+        //.post(NamedRoutes.urlCheckPath("{id}"), UrlCheckController::create);
     }
 
     public static String getJdbs() {
