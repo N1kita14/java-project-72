@@ -25,7 +25,7 @@ public class UrlsController {
         var urls = UrlRepository.getEntities();
         //var listChecks = UrlCheckRepository.getLastChecks();
         var page = new UrlsPage(urls);
-        //page.setFlash(ctx.consumeSessionAttribute("flash"));
+        page.setFlash(ctx.consumeSessionAttribute("flash"));
         ctx.render("urls/index.jte", model("page", page));
     }
 

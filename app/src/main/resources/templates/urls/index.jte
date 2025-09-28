@@ -24,12 +24,6 @@ content = @`
                             <tr>
                                 <td>${url.getId()}</td>
                                 <td><a href="/urls/${url.getId()}">${url.getName()}</a></td>
-
-
-
-
-
-                                @endif</td>
                             </tr>
                         @endfor
                     @endif
@@ -38,6 +32,4 @@ content = @`
             </div>
         </section>
     </main>
-
-    `
 )
