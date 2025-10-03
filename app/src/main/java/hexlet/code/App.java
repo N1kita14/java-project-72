@@ -27,7 +27,7 @@ public class App {
     //private static Javalin instance;
 
     public static void main(String[] args) throws SQLException, IOException {
-        //var app = getApp();
+        var app = getApp();
         getApp().start(7000);
     }
 
@@ -47,15 +47,18 @@ public class App {
         }
         BaseRepository.dataSource = dataSource;
 
-        return Javalin.create(config -> {
+        var app = Javalin.create(config -> {
+            config.bundledPlugins.enableDevLogging();
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
-        })
-        .get(NamedRoutes.rootPath(), RootController::index)
+        });
 
-        .post(NamedRoutes.urlsPath(), UrlsController::create)
-        .get(NamedRoutes.urlsPath(), UrlsController::index)
-        .get(NamedRoutes.urlPath("{id}"), UrlsController::show)
-        .post(NamedRoutes.urlCheckPath("{id}"), UrlCheckController::create);
+        app.get(NamedRoutes.rootPath(), RootController::index);
+
+        app.post(NamedRoutes.urlsPath(), UrlsController::create);
+        app.get(NamedRoutes.urlsPath(), UrlsController::index);
+        app.get(NamedRoutes.urlPath("{id}"), UrlsController::show);
+        app.post(NamedRoutes.urlCheckPath("{id}"), UrlCheckController::create);
+        return app;
     }
 
     public static String getJdbs() {
