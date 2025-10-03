@@ -6,6 +6,7 @@ import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
 import hexlet.code.controller.RootController;
+import hexlet.code.controller.UrlCheckController;
 import hexlet.code.controller.UrlsController;
 import hexlet.code.repository.BaseRepository;
 import hexlet.code.util.NamedRoutes;
@@ -46,16 +47,6 @@ public class App {
         }
         BaseRepository.dataSource = dataSource;
 
-        /*if (instance == null) {
-            instance = Javalin.create(config -> {
-                config.fileRenderer(new JavalinJte(createTemplateEngine()));
-            });
-            instance.get("/", RootController::index);
-            instance.get("/urls", UrlsController::index);
-            instance.get("/urls/{id}", UrlsController::show);
-            instance.post("/urls", UrlsController::create);
-
-        }*/
         return Javalin.create(config -> {
             config.fileRenderer(new JavalinJte(createTemplateEngine()));
         })
@@ -63,8 +54,8 @@ public class App {
 
         .post(NamedRoutes.urlsPath(), UrlsController::create)
         .get(NamedRoutes.urlsPath(), UrlsController::index)
-        .get(NamedRoutes.urlPath("{id}"), UrlsController::show);
-        //.post(NamedRoutes.urlCheckPath("{id}"), UrlCheckController::create);
+        .get(NamedRoutes.urlPath("{id}"), UrlsController::show)
+        .post(NamedRoutes.urlCheckPath("{id}"), UrlCheckController::create);
     }
 
     public static String getJdbs() {

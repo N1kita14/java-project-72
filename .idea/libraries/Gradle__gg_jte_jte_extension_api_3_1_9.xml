@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: gg.jte:jte-extension-api:3.1.9" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="gg.jte" artifactId="jte-extension-api" version="3.1.9" baseVersion="3.1.9" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/gg.jte/jte-extension-api/3.1.9/15c29ae7d20f9183b0f5d3b51fa6d4a39750061e/jte-extension-api-3.1.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

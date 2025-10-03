@@ -2,9 +2,11 @@ package hexlet.code;
 
 import hexlet.code.models.Url;
 //import hexlet.code.models.UrlCheck;
+import hexlet.code.models.UrlCheck;
 import hexlet.code.repository.UrlRepository;
 import hexlet.code.repository.UrlCheckRepository;
 //import hexlet.code.util.NamedRoutes;
+import hexlet.code.util.NamedRoutes;
 import io.javalin.Javalin;
 import io.javalin.testtools.JavalinTest;
 import okhttp3.mockwebserver.MockResponse;
@@ -88,10 +90,19 @@ public final class AppTest {
     }
 
     @Test
-    public void testNotFound() throws SQLException, IOException {
+    public void testCheck() throws SQLException, IOException {
+        String mockUrl = mockServer.url("/").toString();
+        Url url = new Url(mockUrl);
+        UrlRepository.save(url);
+
         JavalinTest.test(App.getApp(), (server, client) -> {
-            var response = client.get("/urls/7777777");
-            assertThat(response.code()).isEqualTo(404);
+            var response = client.post(NamedRoutes.urlCheckPath(url.getId()));
+            List<UrlCheck> checkList = UrlCheckRepository.getEntities(url.getId());
+            assertThat(response.code()).isEqualTo(200);
+            UrlCheck firstCheck = checkList.get(0);
+            assertThat(firstCheck.getStatusCode()).isEqualTo(200);
+            assertThat(firstCheck.getH1()).isEqualTo("H1");
+            assertThat(firstCheck.getDescription()).isEqualTo("description");
         });
     }
 }

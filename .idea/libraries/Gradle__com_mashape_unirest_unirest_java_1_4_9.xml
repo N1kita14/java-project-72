@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mashape.unirest:unirest-java:1.4.9" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.mashape.unirest" artifactId="unirest-java" version="1.4.9" baseVersion="1.4.9" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mashape.unirest/unirest-java/1.4.9/778cffcba803dc7d43932266aef4c91f5b6b4dd0/unirest-java-1.4.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
