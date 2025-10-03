@@ -24,11 +24,11 @@ content = @`
                             <tr>
                                 <td>${url.getId()}</td>
                                 <td><a href="/urls/${url.getId()}">${url.getName()}</a></td>
-
-
-
-
-
+                                <td>@if(page.getUrlChecks().containsKey(url.getId()))
+                                ${(page.getUrlChecks().get(url.getId()).getCreatedAt()).toString()}
+                                @endif</td>
+                                <td>@if(page.getUrlChecks().containsKey(url.getId()))
+                                ${page.getUrlChecks().get(url.getId()).getStatusCode()}
                                 @endif</td>
                             </tr>
                         @endfor

@@ -23,8 +23,8 @@ public class UrlsController {
 
     public static void index(Context ctx) throws SQLException {
         var urls = UrlRepository.getEntities();
-        //var listChecks = UrlCheckRepository.getLastChecks();
-        var page = new UrlsPage(urls);
+        var listChecks = UrlCheckRepository.getLastChecks();
+        var page = new UrlsPage(urls, listChecks);
         page.setFlash(ctx.consumeSessionAttribute("flash"));
         ctx.render("urls/index.jte", model("page", page));
     }
@@ -33,8 +33,8 @@ public class UrlsController {
         var id = ctx.pathParamAsClass("id", Long.class).get();
         var url = UrlRepository.find(id)
                 .orElseThrow(() -> new NotFoundResponse("Page not found"));
-        //var urlList = UrlCheckRepository.getEntities(id);
-        var page = new UrlPage(url);
+        var urlList = UrlCheckRepository.getEntities(id);
+        var page = new UrlPage(url, urlList);
         ctx.render("urls/show.jte", model("page", page));
     }
 
