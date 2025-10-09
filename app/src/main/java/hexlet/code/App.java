@@ -30,7 +30,7 @@ public class App {
         var app = getApp();
         app.start(7000);
     }
-//
+
     public static Javalin getApp() throws IOException, SQLException {
 
         var hikariConfig = new HikariConfig();
