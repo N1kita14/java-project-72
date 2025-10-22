@@ -54,7 +54,7 @@ tasks.test {
     }
 }
 
-tasks.withType<Copy>().configureEach {
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>().configureEach {
     filePermissions {
         unix("rwxr-xr-x")
     }
