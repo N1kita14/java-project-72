@@ -53,6 +53,13 @@ tasks.test {
         showStandardStreams = true
     }
 }
+
+tasks.withType<Copy>().configureEach {
+    filePermissions {
+        unix("rwxr-xr-x")
+    }
+}
+
 tasks.jacocoTestReport {
     reports {
         xml.required = true
