@@ -2,7 +2,7 @@
   <library name="Gradle: org.eclipse.jetty.http2:http2-common:11.0.20" type="java-imported" external-system-id="GRADLE">
     <properties groupId="org.eclipse.jetty.http2" artifactId="http2-common" version="11.0.20" baseVersion="11.0.20" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.http2/http2-common/11.0.20/de042fd9975f62dfcdafc9bedcf77800ed8e7a27/http2-common-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/org.eclipse.jetty.http2/http2-common/11.0.20/de042fd9975f62dfcdafc9bedcf77800ed8e7a27/http2-common-11.0.20.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

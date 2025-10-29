@@ -2,7 +2,7 @@
   <library name="Gradle: io.javalin:javalin:6.4.0" type="java-imported" external-system-id="GRADLE">
     <properties groupId="io.javalin" artifactId="javalin" version="6.4.0" baseVersion="6.4.0" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.javalin/javalin/6.4.0/f78468626c6f83b805ac3af3243277fd2cfb4481/javalin-6.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/io.javalin/javalin/6.4.0/f78468626c6f83b805ac3af3243277fd2cfb4481/javalin-6.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

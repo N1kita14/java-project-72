@@ -2,7 +2,7 @@
   <library name="Gradle: io.javalin:javalin-testtools:6.1.3" type="java-imported" external-system-id="GRADLE">
     <properties groupId="io.javalin" artifactId="javalin-testtools" version="6.1.3" baseVersion="6.1.3" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.javalin/javalin-testtools/6.1.3/629bb5a97f7154e0ff04a0a355037acac11ab60a/javalin-testtools-6.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/io.javalin/javalin-testtools/6.1.3/629bb5a97f7154e0ff04a0a355037acac11ab60a/javalin-testtools-6.1.3.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -2,7 +2,7 @@
   <library name="Gradle: org.eclipse.jetty.websocket:websocket-jetty-api:11.0.24" type="java-imported" external-system-id="GRADLE">
     <properties groupId="org.eclipse.jetty.websocket" artifactId="websocket-jetty-api" version="11.0.24" baseVersion="11.0.24" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-jetty-api/11.0.24/2e7355a7bbf8aefce69bc9669c30d2f03510d39c/websocket-jetty-api-11.0.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-jetty-api/11.0.24/2e7355a7bbf8aefce69bc9669c30d2f03510d39c/websocket-jetty-api-11.0.24.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

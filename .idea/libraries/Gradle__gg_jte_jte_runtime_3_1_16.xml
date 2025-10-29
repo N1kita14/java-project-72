@@ -2,7 +2,7 @@
   <library name="Gradle: gg.jte:jte-runtime:3.1.16" type="java-imported" external-system-id="GRADLE">
     <properties groupId="gg.jte" artifactId="jte-runtime" version="3.1.16" baseVersion="3.1.16" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/gg.jte/jte-runtime/3.1.16/9cd7b4ce11f35d2801315687018d65d5773b274a/jte-runtime-3.1.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/gg.jte/jte-runtime/3.1.16/9cd7b4ce11f35d2801315687018d65d5773b274a/jte-runtime-3.1.16.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
