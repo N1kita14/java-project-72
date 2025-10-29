@@ -34,13 +34,14 @@ dependencies {
     implementation("org.apache.commons:commons-text:1.11.0")
     implementation("gg.jte:jte-runtime:3.1.16")
     implementation("gg.jte:jte:3.1.9")
-    //implementation("org.slf4j:slf4j-simple:2.0.9")
+    // implementation("org.slf4j:slf4j-simple:2.0.9")
     implementation("io.javalin:javalin:6.4.0")
     implementation("io.javalin:javalin-bundle:6.1.3")
     implementation("io.javalin:javalin-rendering:6.1.3")
     implementation("org.jsoup:jsoup:1.18.3")
     implementation("org.postgresql:postgresql:42.7.2")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.1")
+
     testImplementation("org.assertj:assertj-core:3.27.2")
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -49,14 +50,22 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.test {
-    useJUnitPlatform()
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
-        events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
+        events = mutableSetOf(
+            TestLogEvent.FAILED,
+            TestLogEvent.PASSED,
+            TestLogEvent.SKIPPED
+        )
         showStandardStreams = true
+    }
+}
+
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
     }
 }
 
