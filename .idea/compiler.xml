@@ -12,9 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="app" target="23" />
-      <module name="app.main" target="23" />
-      <module name="app.test" target="23" />
+      <module name="app" target="21" />
+      <module name="app.main" target="21" />
+      <module name="app.test" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

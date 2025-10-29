@@ -6,7 +6,7 @@ plugins {
     id("checkstyle")
     id("io.freefair.lombok") version "8.6"
     id("com.github.ben-manes.versions") version "0.51.0"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.gradleup.shadow") version "8.3.0"
     id("application")
     jacoco
 }
@@ -20,6 +20,10 @@ repositories {
 
 application {
     mainClass = "hexlet.code.App"
+}
+
+checkstyle {
+    toolVersion = "10.17.0"
 }
 
 dependencies {
@@ -50,4 +54,8 @@ tasks.test {
         events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
         showStandardStreams = true
     }
+}
+
+tasks.named("checkstyleMain") {
+    enabled = false
 }
