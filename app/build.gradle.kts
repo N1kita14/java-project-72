@@ -49,6 +49,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.test {
+    useJUnitPlatform()
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
         events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
