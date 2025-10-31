@@ -1,6 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
+
 plugins {
     id("java")
     id("checkstyle")
@@ -8,6 +9,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.51.0"
     id("com.gradleup.shadow") version "8.3.0"
     id("application")
+    id("org.sonarqube") version "7.0.1.6134"
     jacoco
 }
 
@@ -40,7 +42,6 @@ dependencies {
     implementation("org.jsoup:jsoup:1.18.3")
     implementation("org.postgresql:postgresql:42.7.2")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.1")
-
     testImplementation("org.assertj:assertj-core:3.27.2")
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -70,4 +71,11 @@ testing {
 
 tasks.named("checkstyleMain") {
     enabled = false
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "N1kita14_java-project-72")
+        property("sonar.organization", "n1kita14")
+    }
 }

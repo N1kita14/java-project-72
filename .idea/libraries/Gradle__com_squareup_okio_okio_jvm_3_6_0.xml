@@ -6,7 +6,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.6.0/5b1761b9f5cd934db274cf972582e3dd6b267272/okio-jvm-3.6.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.6.0/5b1761b9f5cd934db274cf972582e3dd6b267272/okio-jvm-3.6.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
