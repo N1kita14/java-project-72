@@ -1,5 +1,6 @@
 package hexlet.code.controller;
 
+
 import hexlet.code.dto.urls.UrlPage;
 import hexlet.code.dto.urls.UrlsPage;
 import hexlet.code.models.Url;
@@ -9,7 +10,7 @@ import hexlet.code.util.NamedRoutes;
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
 
-import java.net.HttpURLConnection;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -37,55 +38,25 @@ public class UrlsController {
         ctx.render("urls/show.jte", model("page", page));
     }
 
-    public static void create(Context ctx) throws SQLException {
+    public static void create(Context ctx) throws SQLException, IllegalArgumentException {
         var name = ctx.formParam("url");
 
         try {
-            // Проверяем, что URL корректен синтаксически
             URL absoluteUrl = new URI(name).toURL();
             String schema = absoluteUrl.toURI().getScheme();
             String authority = absoluteUrl.toURI().getAuthority();
-
-            if (schema == null || authority == null) {
-                throw new URISyntaxException(name, "Некорректный формат URL");
-            }
-
-            // Проверяем, что домен реально существует
-            try {
-                var connection = (HttpURLConnection) absoluteUrl.openConnection();
-                connection.setRequestMethod("HEAD");
-                connection.setConnectTimeout(3000);
-                connection.connect();
-                int code = connection.getResponseCode();
-                if (code >= 400) {
-                    ctx.sessionAttribute("flash", "Сайт недоступен или не существует");
-                    ctx.redirect(NamedRoutes.rootPath());
-                    return;
-                }
-            } catch (Exception e) {
-                ctx.sessionAttribute("flash", "URL недоступен или не существует");
-                ctx.redirect(NamedRoutes.rootPath());
-                return;
-            }
-
             Url url = new Url(schema + "://" + authority);
-            Optional<Url> foundUrl = UrlRepository.findByName(url.getName());
-
-            if (foundUrl.isEmpty()) {
+            Optional<Url> foundedUrl = UrlRepository.findByName(url.getName());
+            if (foundedUrl.isEmpty()) {
                 UrlRepository.save(url);
                 ctx.sessionAttribute("flash", "Страница успешно добавлена");
             } else {
                 ctx.sessionAttribute("flash", "Страница уже существует");
             }
-
             ctx.redirect(NamedRoutes.urlsPath());
-
-        } catch (URISyntaxException | IllegalArgumentException e) {
+        } catch (URISyntaxException | IllegalArgumentException | IOException e) {
             ctx.sessionAttribute("flash", "Некорректный URL");
-            ctx.redirect(NamedRoutes.rootPath()); // остаться на главной!
-        } catch (Exception e) {
-            ctx.sessionAttribute("flash", "Ошибка при добавлении URL");
-            ctx.redirect(NamedRoutes.rootPath());
+            ctx.redirect(NamedRoutes.urlsPath());
         }
     }
 }
