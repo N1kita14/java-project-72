@@ -35,6 +35,10 @@ public class UrlsController {
                 .orElseThrow(() -> new NotFoundResponse("Page not found"));
         var urlList = UrlCheckRepository.getEntities(id);
         var page = new UrlPage(url, urlList);
+
+        page.setFlash(ctx.consumeSessionAttribute("flash"));
+
+
         ctx.render("urls/show.jte", model("page", page));
     }
 
