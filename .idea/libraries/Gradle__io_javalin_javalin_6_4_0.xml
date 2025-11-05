@@ -5,6 +5,9 @@
       <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/io.javalin/javalin/6.4.0/f78468626c6f83b805ac3af3243277fd2cfb4481/javalin-6.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/io.javalin/javalin/6.4.0/cf3f2bb445d61d9b3b3f544b4915d3ec6a545996/javalin-6.4.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GradleCache/caches/modules-2/files-2.1/io.javalin/javalin/6.4.0/cf3f2bb445d61d9b3b3f544b4915d3ec6a545996/javalin-6.4.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

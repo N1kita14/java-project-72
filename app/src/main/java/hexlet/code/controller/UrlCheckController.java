@@ -10,7 +10,6 @@ import hexlet.code.util.NamedRoutes;
 import io.javalin.http.Context;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
 import java.sql.SQLException;
 
 public class UrlCheckController {
